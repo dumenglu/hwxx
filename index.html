@@ -17,6 +17,7 @@
                         secondary: '#81C784',    // 浅绿色
                         accent: '#F0F9F0',       // 超浅绿背景
                         dark: '#1B5E20',         // 深绿色
+                        highlight: '#E53E3E',    // 新增高亮红色
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -104,6 +105,12 @@
                             <span class="nav-text">扶沟特色</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="#hotel" class="hover:text-secondary transition-colors flex items-center">
+                            <i class="fa fa-hotel nav-icon mr-1 sm:mr-1"></i> 
+                            <span class="nav-text">酒店信息</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -135,7 +142,7 @@
                             <i class="fa fa-robot"></i>
                         </div>
                         <div class="bg-secondary text-gray-800 rounded-lg rounded-tl-none px-4 py-2 max-w-[80%]">
-                            <p class="pre-line">您好！欢迎咨询2025绿业元全国网点会的会务信息。我可以为您解答关于会议时间、地点、参会要求、天气以及扶沟当地美食、名人等相关问题。请问有什么可以帮助您的？</p>
+                            <p class="pre-line">您好！欢迎咨询2025绿业元全国网点会的会务信息。我可以为您解答关于<span class="text-highlight font-semibold">会议时间</span>、<span class="text-highlight font-semibold">地点</span>、<span class="text-highlight font-semibold">参会要求</span>、<span class="text-highlight font-semibold">天气</span>、<span class="text-highlight font-semibold">酒店信息</span>以及<span class="text-highlight font-semibold">扶沟当地美食</span>、<span class="text-highlight font-semibold">名人</span>等相关问题。请问有什么可以帮助您的？</p>
                         </div>
                     </div>
                 </div>
@@ -176,8 +183,8 @@
                             <i class="fa fa-map-marker mr-2"></i> 会议地址
                         </h4>
                         <p class="text-gray-700">扶沟·桐丘明居大酒店</p>
-                        <div class="mt-3 flex items-center text-primary">
-                            <a href="https://amap.com/search?query=扶沟桐丘明居大酒店" target="_blank" class="hover:underline flex items-center">
+                        <div class="mt-3 flex items-center">
+                            <a href="https://amap.com/search?query=扶沟桐丘明居大酒店" target="_blank" class="text-highlight hover:text-red-800 font-semibold hover:underline flex items-center">
                                 <i class="fa fa-map mr-1"></i> 查看地图
                             </a>
                         </div>
@@ -308,6 +315,44 @@
                 </div>
             </div>
         </section>
+
+        <!-- 桐丘明居大酒店介绍 -->
+        <section id="hotel" class="max-w-4xl mx-auto mb-16">
+            <div class="bg-white rounded-xl p-6 card-shadow">
+                <h3 class="text-2xl font-bold text-primary mb-6 text-center">桐丘明居大酒店介绍</h3>
+                
+                <div class="bg-accent rounded-lg p-5">
+                    <h4 class="font-bold text-lg text-dark mb-3 flex items-center">
+                        <i class="fa fa-hotel mr-2"></i> 酒店简介
+                    </h4>
+                    <p class="text-gray-700 mb-4">
+                        周口桐丘明居大酒店是中国绿业元集团投资兴建，按星级标准建设的豪华商务会展型综合酒店，酒店一期面积50000㎡，全面接入智慧酒店系统，酒店拥有各种品级，可接待1000人同时入住。
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        酒店拥有5个各具特色的餐厅：桐丘宴中餐厅、元全日自助餐、九间堂中餐、音乐酒吧餐厅、乐咖啡厅。
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        酒店拥有大小9个多功能厅，两个3000平方米无柱多功能厅，可举办3000人会议、7场宴会、满足2000人用餐，是举行各种形式商务宴会和婚喜宴会的场所。
+                    </p>
+                    <p class="text-gray-700">
+                        桐丘明居大酒店秉承"四海一家親"服务理念，至臻至诚的中国式服务，致力于为宾客提供精致、舒适、优雅的酒店体验，承蒙期待您对桐丘明居大酒店的惠顾！
+                    </p>
+                    
+                    <div class="mt-4 p-3 bg-white rounded-lg">
+                        <h5 class="font-semibold text-dark mb-2 flex items-center">
+                            <i class="fa fa-phone mr-2"></i> 联系方式
+                        </h5>
+                        <p class="text-gray-700">前台电话：<a href="tel:0394-7776777" class="text-primary hover:underline">0394-7776777</a></p>
+                    </div>
+                    
+                    <div class="mt-3 flex items-center text-primary">
+                        <button onclick="askAboutHotel()" class="hover:underline flex items-center text-sm">
+                            <i class="fa fa-comment mr-1"></i> 向AI咨询酒店详情
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-primary text-white py-6">
@@ -349,6 +394,23 @@
                 person: "会务部-袁艳艳",
                 phone: "15036022325"
             }
+        };
+
+        // 酒店信息数据库
+        const hotelInfo = {
+            name: "桐丘明居大酒店",
+            intro: "周口桐丘明居大酒店是中国绿业元集团投资兴建，按星级标准建设的豪华商务会展型综合酒店，酒店一期面积50000㎡，全面接入智慧酒店系统，酒店拥有各种品级，可接待1000人同时入住。",
+            restaurants: [
+                "桐丘宴中餐厅",
+                "元全日自助餐",
+                "九间堂中餐",
+                "音乐酒吧餐厅",
+                "乐咖啡厅"
+            ],
+            facilities: "酒店拥有大小9个多功能厅，两个3000平方米无柱多功能厅，可举办3000人会议、7场宴会、满足2000人用餐，是举行各种形式商务宴会和婚喜宴会的场所。",
+            serviceConcept: "桐丘明居大酒店秉承'四海一家親'服务理念，至臻至诚的中国式服务，致力于为宾客提供精致、舒适、优雅的酒店体验。",
+            frontDeskPhone: "0394-7776777",
+            keywords: ["酒店", "桐丘明居", "房间", "订房", "电话", "前台", "住宿", "餐厅", "会议室"]
         };
 
         // 扶沟特色信息数据库
@@ -482,9 +544,24 @@
             let response = "";
             const lowerCaseMessage = userMessage.toLowerCase();
             
+            // 检查是否询问酒店相关信息
+            const hotelMatch = isHotelRelated(lowerCaseMessage);
+            if (hotelMatch) {
+                if (lowerCaseMessage.includes("电话") || lowerCaseMessage.includes("前台") || lowerCaseMessage.includes("联系")) {
+                    response = `桐丘明居大酒店前台电话：${hotelInfo.frontDeskPhone}。如有房间预订或其他需求，请直接致电前台咨询。`;
+                } else if (lowerCaseMessage.includes("房间") || lowerCaseMessage.includes("住宿") || lowerCaseMessage.includes("订房")) {
+                    response = `桐丘明居大酒店拥有各种品级的房间，可同时接待1000人入住。如需预订房间或了解房型详情，请直接致电前台：${hotelInfo.frontDeskPhone}。`;
+                } else if (lowerCaseMessage.includes("餐厅") || lowerCaseMessage.includes("吃饭") || lowerCaseMessage.includes("美食")) {
+                    response = `桐丘明居大酒店拥有5个各具特色的餐厅：${hotelInfo.restaurants.join("、")}。为您提供多样化的餐饮选择。`;
+                } else if (lowerCaseMessage.includes("会议室") || lowerCaseMessage.includes("会议设施") || lowerCaseMessage.includes("场地")) {
+                    response = `桐丘明居大酒店拥有大小9个多功能厅，包括两个3000平方米无柱多功能厅，可举办3000人会议、7场宴会、满足2000人用餐，是举行各种形式商务宴会和婚喜宴会的理想场所。`;
+                } else {
+                    response = `桐丘明居大酒店简介：${hotelInfo.intro}酒店拥有${hotelInfo.restaurants.length}个特色餐厅和先进的会议设施。前台电话：${hotelInfo.frontDeskPhone}。您想了解酒店的哪些具体信息？`;
+                }
+            }
             // 检查是否询问特定美食
-            const foodMatch = findMatchingFood(lowerCaseMessage);
-            if (foodMatch) {
+            else if (findMatchingFood(lowerCaseMessage)) {
+                const foodMatch = findMatchingFood(lowerCaseMessage);
                 response = `${foodMatch.name}：${foodMatch.description}`;
             }
             // 检查是否询问特定名人
@@ -546,16 +623,21 @@
                 response = `📞 会务咨询请联系：${conferenceInfo.contact.person}，电话：${conferenceInfo.contact.phone}。`;
             }
             else if (lowerCaseMessage.includes("你好") || lowerCaseMessage.includes("您好") || lowerCaseMessage.includes("嗨") || lowerCaseMessage.includes("hello")) {
-                response = "您好！我是2025绿业元全国网点会的AI咨询助手，我可以为您解答关于会议时间、地点、参会要求、天气以及扶沟当地美食、名人等方面的问题。请问有什么可以帮您？";
+                response = "您好！我是2025绿业元全国网点会的AI咨询助手，我可以为您解答关于会议时间、地点、参会要求、天气、酒店信息以及扶沟当地美食、名人等方面的问题。请问有什么可以帮您？";
             }
             else {
-                response = "抱歉，我没有理解您的问题。关于2025绿业元全国网点会的更多信息，您可以参考会务指南，或联系会务部袁艳艳（15036022325）咨询。如果您想了解扶沟的美食或名人，也可以直接问我哦！";
+                response = "抱歉，我没有理解您的问题。关于2025绿业元全国网点会的更多信息，您可以参考会务指南，或联系会务部袁艳艳（15036022325）咨询。如果您想了解扶沟的美食、名人或酒店信息，也可以直接问我哦！";
             }
             
             // 模拟思考延迟
             setTimeout(() => {
                 addMessageToChat(response, 'ai');
             }, 800);
+        }
+
+        // 检查是否与酒店相关
+        function isHotelRelated(message) {
+            return hotelInfo.keywords.some(keyword => message.includes(keyword));
         }
 
         // 查找匹配的美食
@@ -605,6 +687,19 @@
             // 设置输入框的值并触发提交
             setTimeout(() => {
                 userInput.value = "扶沟有哪些名人？";
+                chatForm.dispatchEvent(new Event('submit'));
+            }, 700);
+        }
+
+        function askAboutHotel() {
+            // 平滑滚动到聊天界面
+            document.getElementById('chat').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+            
+            // 设置输入框的值并触发提交
+            setTimeout(() => {
+                userInput.value = "桐丘明居大酒店有什么设施？";
                 chatForm.dispatchEvent(new Event('submit'));
             }, 700);
         }
