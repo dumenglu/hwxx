@@ -56,22 +56,54 @@
             .pre-line {
                 white-space: pre-line;
             }
+            /* 控制LOGO大小 */
+            .logo-img {
+                max-height: 40px;
+                width: auto;
+            }
+            /* 移动端导航文字隐藏 */
+            @media (max-width: 640px) {
+                .nav-text {
+                    display: none;
+                }
+                .nav-icon {
+                    font-size: 1.2rem;
+                    margin-right: 0;
+                }
+            }
         }
     </style>
 </head>
 <body class="bg-accent min-h-screen">
     <!-- 顶部导航 -->
-    <header class="bg-primary text-white shadow-md">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <header class="bg-primary text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <!-- 替换树叶图标为公司LOGO -->
-                <a href='https://postimg.cc/bZ54nQS6' target='_blank'><img src='https://i.postimg.cc/bZ54nQS6/3-logo.png' border='0' alt='3-logo'/></a>
+                <a href='https://postimg.cc/bZ54nQS6' target='_blank'>
+                    <img src='https://i.postimg.cc/bZ54nQS6/3-logo.png' class="logo-img" border='0' alt='3-logo'/>
+                </a>
             </div>
             <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="#chat" class="hover:text-secondary transition-colors"><i class="fa fa-comments mr-1"></i> 在线咨询</a></li>
-                    <li><a href="#info" class="hover:text-secondary transition-colors"><i class="fa fa-info-circle mr-1"></i> 会务信息</a></li>
-                    <li><a href="#fugou" class="hover:text-secondary transition-colors"><i class="fa fa-cutlery mr-1"></i> 扶沟特色</a></li>
+                <ul class="flex space-x-4 sm:space-x-6">
+                    <li>
+                        <a href="#chat" class="hover:text-secondary transition-colors flex items-center">
+                            <i class="fa fa-comments nav-icon mr-1 sm:mr-1"></i> 
+                            <span class="nav-text">在线咨询</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#info" class="hover:text-secondary transition-colors flex items-center">
+                            <i class="fa fa-info-circle nav-icon mr-1 sm:mr-1"></i> 
+                            <span class="nav-text">会务信息</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#fugou" class="hover:text-secondary transition-colors flex items-center">
+                            <i class="fa fa-cutlery nav-icon mr-1 sm:mr-1"></i> 
+                            <span class="nav-text">扶沟特色</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -111,8 +143,8 @@
                 <div class="p-4 border-t">
                     <form id="chat-form" class="flex gap-2">
                         <input type="text" id="user-input" placeholder="请输入您的问题..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
-                        <button type="submit" class="bg-primary hover:bg-dark text-white px-4 py-2 rounded-lg transition-colors flex items-center">
-                        <i class="fa fa-paper-plane mr-1"></i> 发送
+                        <button type="submit" class="bg-primary hover:bg-dark text-white px-4 py-2 rounded-lg transition-colors flex items-center whitespace-nowrap">
+                            <i class="fa fa-paper-plane mr-1"></i> 发送
                         </button>
                     </form>
                 </div>
@@ -158,9 +190,9 @@
                         </h4>
                         <ul class="space-y-2 text-gray-700 list-disc list-inside">
                             <li>携带身份证参会</li>
-                            <li>会议全程佩戴参会证，不迟到，不早退</li>
+                            <li>会议期间全程佩戴参会证，不迟到，不早退</li>
                             <li>请携带日常自用药品</li>
-                            <li>会议期间严禁发抖音、视频号、朋友圈</li>
+                            <li>会议期间严禁发抖音、视频号、朋友圈等</li>
                         </ul>
                     </div>
                     
@@ -474,7 +506,7 @@
                 response = "扶沟可是人杰地灵呢！最让我们引以为傲的是抗日英雄吉鸿昌将军。他不仅是战功卓著的将领，更有铮铮铁骨。他在国外胸前佩戴'我是中国人'木牌的故事，以及就义前'国破尚如此，我何惜此头'的诗篇，都感人至深。另外，北宋理学家程颢也曾在我们扶沟做过知县，他勤政爱民、刚正不阿，留下了'视民如伤'的佳话。您对哪一位的故事更感兴趣呢？";
             }
             // 会议时间/日程相关关键词
-            else if (lowerCaseMessage.includes("会议时间") || lowerCaseMessage.includes("会议日程") || lowerCaseMessage.includes("时间安排") || lowerCaseMessage.includes("议程") || lowerCaseMessage.includes("日程安排")) {
+            else if (lowerCaseMessage.includes("会议时间") || lowerCaseMessage.includes("会议日程") || lowerCaseMessage.includes("时间安排")  || lowerCaseMessage.includes("日程") || lowerCaseMessage.includes("议程") || lowerCaseMessage.includes("日程安排")) {
                 response = `📅 会议时间安排如下：\n• 报到：${conferenceInfo.time.checkin}\n• DeepSeek培训：${conferenceInfo.time.training}\n• 工作会议：${conferenceInfo.time.meeting}\n• 参观返程：${conferenceInfo.time.return}`;
             }
             // 会务信息相关关键词
@@ -552,13 +584,29 @@
 
         // 快速提问函数
         function askAboutFood() {
-            userInput.value = "扶沟有什么美食推荐？";
-            chatForm.dispatchEvent(new Event('submit'));
+            // 平滑滚动到聊天界面
+            document.getElementById('chat').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+            
+            // 设置输入框的值并触发提交
+            setTimeout(() => {
+                userInput.value = "扶沟有什么美食推荐？";
+                chatForm.dispatchEvent(new Event('submit'));
+            }, 700);
         }
 
         function askAboutCelebrities() {
-            userInput.value = "扶沟有哪些名人？";
-            chatForm.dispatchEvent(new Event('submit'));
+            // 平滑滚动到聊天界面
+            document.getElementById('chat').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+            
+            // 设置输入框的值并触发提交
+            setTimeout(() => {
+                userInput.value = "扶沟有哪些名人？";
+                chatForm.dispatchEvent(new Event('submit'));
+            }, 700);
         }
 
         // 平滑滚动
@@ -572,5 +620,4 @@
         });
     </script>
 </body>
-
 </html>
