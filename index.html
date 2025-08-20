@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025绿业元全国网点会 - 会务咨询</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind自定义颜色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2E7D32',      // 主绿色
+                        secondary: '#81C784',    // 浅绿色
+                        accent: '#F0F9F0',       // 超浅绿背景
+                        dark: '#1B5E20',         // 深绿色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            }
+            .card-shadow {
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            }
+            .fade-in {
+                animation: fadeIn 0.5s ease-in-out;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            .typing-animation::after {
+                content: '|';
+                animation: blink 1s step-end infinite;
+            }
+            @keyframes blink {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0; }
+            }
+            /* 新增样式：处理换行显示 */
+            .pre-line {
+                white-space: pre-line;
+            }
+        }
+    </style>
+</head>
+<body class="bg-accent min-h-screen">
+    <!-- 顶部导航 -->
+    <header class="bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <!-- 替换树叶图标为公司LOGO -->
+                <a href='https://postimg.cc/bZ54nQS6' target='_blank'><img src='https://i.postimg.cc/bZ54nQS6/3-logo.png' border='0' alt='3-logo'/></a>
+                <h1 class="text-xl md:text-2xl font-bold">2025绿业元全国网点会</h1>
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#chat" class="hover:text-secondary transition-colors"><i class="fa fa-comments mr-1"></i> 在线咨询</a></li>
+                    <li><a href="#info" class="hover:text-secondary transition-colors"><i class="fa fa-info-circle mr-1"></i> 会务信息</a></li>
+                    <li><a href="#fugou" class="hover:text-secondary transition-colors"><i class="fa fa-cutlery mr-1"></i> 扶沟特色</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- 页面标题 -->
+        <div class="text-center mb-12">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-primary mb-4">2025绿业元全国网点会</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">欢迎回到老家扶沟！</p>
+        </div>
+                    
+
+        <!-- 聊天界面 -->
+        <section id="chat" class="max-w-2xl mx-auto mb-16">
+            <div class="bg-white rounded-xl overflow-hidden card-shadow">
+                <div class="bg-primary text-white p-4">
+                    <h3 class="text-xl font-bold flex items-center">
+                        <i class="fa fa-comments mr-2"></i>
+                        会务AI咨询助手
+                    </h3>
+                    <p class="text-sm opacity-80">有任何会务问题或扶沟特色咨询，我会尽力为您解答</p>
+                </div>
+                
+                <div id="chat-messages" class="h-96 overflow-y-auto p-4 space-y-4 bg-gray-50">
+                    <!-- 欢迎消息 -->
+                    <div class="flex items-start fade-in">
+                        <div class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mr-3">
+                            <i class="fa fa-robot"></i>
+                        </div>
+                        <div class="bg-secondary text-gray-800 rounded-lg rounded-tl-none px-4 py-2 max-w-[80%]">
+                            <p class="pre-line">您好！欢迎咨询2025绿业元全国网点会的会务信息。我可以为您解答关于会议时间、地点、参会要求、天气以及扶沟当地美食、名人等相关问题。请问有什么可以帮助您的？</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-4 border-t">
+                    <form id="chat-form" class="flex gap-2">
+                        <input type="text" id="user-input" placeholder="请输入您的问题..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                        <button type="submit" class="bg-primary hover:bg-dark text-white px-4 py-2 rounded-lg transition-colors flex items-center">
+                            <i class="fa fa-paper-plane mr-1"></i> 发送
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 会务信息摘要 -->
+        <section id="info" class="max-w-4xl mx-auto mb-16">
+            <div class="bg-white rounded-xl p-6 card-shadow">
+                <h3 class="text-2xl font-bold text-primary mb-6 text-center">会务信息</h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- 会议时间 -->
+                    <div class="bg-accent rounded-lg p-5">
+                        <h4 class="font-bold text-lg text-dark mb-3 flex items-center">
+                            <i class="fa fa-calendar mr-2"></i> 会议日程
+                        </h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex justify-between"><span>报到：</span><span>8月22日17:00前</span></li>
+                            <li class="flex justify-between"><span>DeepSeek培训：</span><span>8月23日~24日</span></li>
+                            <li class="flex justify-between"><span>工作会议：</span><span>8月25日~26日</span></li>
+                            <li class="flex justify-between"><span>参观返程：</span><span>8月27日</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 会议地址 -->
+                    <div class="bg-accent rounded-lg p-5">
+                        <h4 class="font-bold text-lg text-dark mb-3 flex items-center">
+                            <i class="fa fa-map-marker mr-2"></i> 会议地址
+                        </h4>
+                        <p class="text-gray-700">扶沟·桐丘明居大酒店</p>
+                        <div class="mt-3 flex items-center text-primary">
+                            <a href="https://amap.com/search?query=扶沟桐丘明居大酒店" target="_blank" class="hover:underline flex items-center">
+                                <i class="fa fa-map mr-1"></i> 查看地图
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 参会要求 -->
+                    <div class="bg-accent rounded-lg p-5">
+                        <h4 class="font-bold text-lg text-dark mb-3 flex items-center">
+                            <i class="fa fa-list-alt mr-2"></i> 参会要求
+                        </h4>
+                        <ul class="space-y-2 text-gray-700 list-disc list-inside">
+                            <li>携带身份证参会</li>
+                            <li>会议全程佩戴参会证，不迟到，不早退</li>
+                            <li>请携带日常自用药品</li>
+                            <li>会议期间严禁发抖音、视频号、朋友圈</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 会期咨询 -->
+                    <div class="bg-accent rounded-lg p-5">
+                        <h4 class="font-bold text-lg text-dark mb-3 flex items-center">
+                            <i class="fa fa-phone mr-2"></i> 会期咨询
+                        </h4>
+                        <p class="text-gray-700 mb-2">各市场经理、科长、蹲点业务员</p>
+                        <p class="text-gray-700">会务部-袁艳艳：<a href="tel:15036022325" class="text-primary hover:underline">15036022325</a></p>
+                    </div>
+                </div>
+                
+                <!-- 会期天气 -->
+                <div class="mt-6 bg-accent rounded-lg p-5">
+                    <h4 class="font-bold text-lg text-dark mb-3 flex items-center">
+                        <i class="fa fa-cloud mr-2"></i> 会期天气
+                    </h4>
+                    <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                        <div class="bg-white rounded-lg p-3 text-center shadow-sm">
+                            <div class="font-medium">8月22日</div>
+                            <div class="text-yellow-500 text-xl my-1"><i class="fa fa-sun-o"></i></div>
+                            <div class="text-sm">27/35°C</div>
+                            <div class="text-xs text-gray-600">晴</div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 text-center shadow-sm">
+                            <div class="font-medium">8月23日</div>
+                            <div class="text-blue-400 text-xl my-1"><i class="fa fa-tint"></i></div>
+                            <div class="text-sm">27/37°C</div>
+                            <div class="text-xs text-gray-600">小雨</div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 text-center shadow-sm">
+                            <div class="font-medium">8月24日</div>
+                            <div class="text-blue-400 text-xl my-1"><i class="fa fa-tint"></i></div>
+                            <div class="text-sm">25/35°C</div>
+                            <div class="text-xs text-gray-600">小雨</div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 text-center shadow-sm">
+                            <div class="font-medium">8月25日</div>
+                            <div class="text-blue-400 text-xl my-1"><i class="fa fa-tint"></i></div>
+                            <div class="text-sm">25/32°C</div>
+                            <div class="text-xs text-gray-600">小雨</div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 text-center shadow-sm">
+                            <div class="font-medium">8月26日</div>
+                            <div class="text-yellow-500 text-xl my-1"><i class="fa fa-cloud"></i></div>
+                            <div class="text-sm">26/34°C</div>
+                            <div class="text-xs text-gray-600">多云</div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 text-center shadow-sm">
+                            <div class="font-medium">8月27日</div>
+                            <div class="text-yellow-500 text-xl my-1"><i class="fa fa-cloud"></i></div>
+                            <div class="text-sm">27/37°C</div>
+                            <div class="text-xs text-gray-600">多云</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 扶沟特色介绍 -->
+        <section id="fugou" class="max-w-4xl mx-auto mb-16">
+            <div class="bg-white rounded-xl p-6 card-shadow">
+                <h3 class="text-2xl font-bold text-primary mb-6 text-center">扶沟特色介绍</h3>
+                
+                <!-- 扶沟简介 -->
+                <div class="mb-6 bg-accent rounded-lg p-5">
+                    <h4 class="font-bold text-lg text-dark mb-3 flex items-center">
+                        <i class="fa fa-info-circle mr-2"></i> 扶沟简介
+                    </h4>
+                    <p class="text-gray-700">
+                        扶沟县位于河南省周口市，因境内东有扶亭、西有洧水沟而得名。这里历史悠久，文化底蕴深厚，
+                        既是北宋理学家程颢曾治理过的地方，也是抗日英雄吉鸿昌将军的故乡。扶沟的美食融合了中原地区的特色，
+                        酱豆、烧饼、大盘鸡、烩面等都是当地代表性美食。
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- 扶沟美食 -->
+                    <div class="bg-accent rounded-lg p-5">
+                        <h4 class="font-bold text-lg text-dark mb-3 flex items-center">
+                            <i class="fa fa-cutlery mr-2"></i> 扶沟美食
+                        </h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex justify-between"><span>酱豆：</span><span>多种口味，居家常备</span></li>
+                            <li class="flex justify-between"><span>烧饼：</span><span>麦香十足，可夹万物</span></li>
+                            <li class="flex justify-between"><span>大盘鸡：</span><span>本地土鸡，味美肉嫩</span></li>
+                            <li class="flex justify-between"><span>崔桥何湾牛肉：</span><span>非遗美食，香味醇厚</span></li>
+                            <li class="flex justify-between"><span>扶沟烩面：</span><span>汤鲜面劲，回味无穷</span></li>
+                        </ul>
+                        <div class="mt-3 flex items-center text-primary">
+                            <button onclick="askAboutFood()" class="hover:underline flex items-center text-sm">
+                                <i class="fa fa-comment mr-1"></i> 向AI咨询更多美食
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 扶沟名人 -->
+                    <div class="bg-accent rounded-lg p-5">
+                        <h4 class="font-bold text-lg text-dark mb-3 flex items-center">
+                            <i class="fa fa-user-circle mr-2"></i> 扶沟名人
+                        </h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex justify-between"><span>吉鸿昌：</span><span>抗日民族英雄</span></li>
+                            <li class="flex justify-between"><span>程颢：</span><span>北宋理学家，曾任职扶沟</span></li>
+                        </ul>
+                        <div class="mt-3 flex items-center text-primary">
+                            <button onclick="askAboutCelebrities()" class="hover:underline flex items-center text-sm">
+                                <i class="fa fa-comment mr-1"></i> 向AI咨询名人故事
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-primary text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-3">
+                <i class="fa fa-heart text-red-300 animate-pulse"></i>
+                <span class="ml-2">期待与您在扶沟相见 ~</span>
+            </div>
+            <p class="text-sm opacity-80">© 2025 绿业元全国网点会 版权所有</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 会务信息数据库
+        const conferenceInfo = {
+            time: {
+                checkin: "8月22日17:00前",
+                training: "8月23日~24日",
+                meeting: "8月25日~26日",
+                return: "8月27日"
+            },
+            location: "扶沟·桐丘明居大酒店",
+            requirements: [
+                "携带身份证参会",
+                "会议全程佩戴参会证，不迟到，不早退",
+                "请携带日常自用药品",
+                "会议期间严禁发抖音、视频号、朋友圈"
+            ],
+            weather: [
+                { date: "8月22日", temp: "27/35°C", condition: "晴", icon: "fa-sun-o" },
+                { date: "8月23日", temp: "27/37°C", condition: "小雨", icon: "fa-tint" },
+                { date: "8月24日", temp: "25/35°C", condition: "小雨", icon: "fa-tint" },
+                { date: "8月25日", temp: "25/32°C", condition: "小雨", icon: "fa-tint" },
+                { date: "8月26日", temp: "26/34°C", condition: "多云", icon: "fa-cloud" },
+                { date: "8月27日", temp: "27/37°C", condition: "多云", icon: "fa-cloud" }
+            ],
+            contact: {
+                person: "会务部-袁艳艳",
+                phone: "15036022325"
+            }
+        };
+
+        // 扶沟特色信息数据库
+        const fugouInfo = {
+            foods: [
+                { 
+                    name: "酱豆", 
+                    description: "多种口味（辣味、西瓜味、冬瓜味等），扶沟人居家常备，是80后回忆中的美味。",
+                    keywords: ["酱豆", "豆酱", "黄豆酱"]
+                },
+                { 
+                    name: "烧饼", 
+                    description: "面粉清香，可撕开夹万物（尤其推荐夹热牛肉），质朴的田园风味，本地人日常主食之一。",
+                    keywords: ["烧饼", "烤饼", "面饼"]
+                },
+                { 
+                    name: "胡辣汤", 
+                    description: "扶沟版本辣味突出，是开启一天的活力早餐，扶沟人早餐的经典选择。",
+                    keywords: ["胡辣汤", "辣汤", "早餐"]
+                },
+                { 
+                    name: "大盘鸡", 
+                    description: "选用本地土鸡，加入多种香料烹制，色泽微黄，味美肉嫩，汤汁浓稠。扶沟的特色美食，深受食客喜爱。",
+                    keywords: ["大盘鸡",  "鸡"]
+                },
+                { 
+                    name: "扶沟烩面", 
+                    description: "汤鲜面劲，配料丰富，是扶沟人最爱的面食之一。烩面的汤底用牛骨熬制，面条筋道有嚼劲，配上香菜、葱花和辣椒油，回味无穷。",
+                    keywords: ["烩面", "扶沟烩面", "面条", "面食"]
+                },
+                { 
+                    name: "崔桥何湾牛肉", 
+                    description: "河南非物质文化遗产。优选本地黄牛，肉质细腻，干而不硬，润而不软，香味醇厚。四十年的匠心传承，代表着扶沟人对品质的坚守。",
+                    keywords: ["牛肉", "崔桥牛肉", "何湾牛肉", "崔桥何湾牛肉"]
+                },
+                { 
+                    name: "烧鸡", 
+                    description: "肉香浓郁，色重味烂，香酥脱骨、咸淡适宜。逢年过节、走亲访友，特别是看老人的常备礼品。",
+                    keywords: ["烧鸡", "烤鸡", "鸡肉"]
+                },
+                { 
+                    name: "芝麻叶面条", 
+                    description: "夏日美味，过凉水的面条配蒜汁、芝麻叶、黄瓜丝，清爽开胃。家常味道，体现了扶沟人简单自然的生活哲学。",
+                    keywords: ["芝麻叶面条", "芝麻叶", "面条", "捞面"]
+                },
+                { 
+                    name: "豆糁", 
+                    description: "又叫豆糁蛋子、臭豆糁，豫东一绝，风味独特、香辣爽口。极具地方特色的民间即食食品，可感受本地风味。",
+                    keywords: ["豆糁", "臭豆糁", "豆糁蛋子"]
+                }
+            ],
+            celebrities: [
+                { 
+                    name: "吉鸿昌将军", 
+                    description: "著名的抗日民族英雄，共产党员。1931年在美国考察时，因被人劝说冒充日本人以获得礼遇，他愤而写下我是中国人的木牌佩戴胸前，彰显民族气节。秉承父亲作官即不许发财的遗训，他将此七字烧制在瓷碗上，发给全体官兵，勉励大家廉洁奉公。1934年就义前，他写下了气壮山河的就义诗：恨不抗日死，留作今日羞。国破尚如此，我何惜此头！",
+                    stories: [
+                        "爱国风骨：佩戴'我是中国人'木牌彰显民族气节",
+                        "清廉传承：'作官即不许发财'的碗铭勉励官兵廉洁奉公",
+                        "英雄绝唱：'国破尚如此，我何惜此头'的就义诗"
+                    ],
+                    keywords: ["吉鸿昌", "将军", "抗日", "英雄"]
+                },
+                { 
+                    name: "程颢", 
+                    description: "北宋理学家，世称明道先生。熙宁八年（1075年）至元丰三年（1080）知扶沟县事。他书视民如伤四字于案旁作为座右铭，重教化、兴水利、减税赋。宦官王中正权倾朝野，各地竞相高标准接待。程颢却以吾邑贫，安能效他邑？且取于民，法所禁也回绝，仅以旧青帐接待，使王中正过扶沟而不入，为百姓减轻负担。离任时，不使人知，老稚追及境上，攀挽号哭不肯去。",
+                    stories: [
+                        "勤政爱民：'视民如伤'四字作为座右铭",
+                        "刚正不阿：拒绝高标准接待权宦，为百姓减负",
+                        "深得民心：离任时百姓'攀挽号哭不肯去'"
+                    ],
+                    keywords: ["程颢", "明道先生", "理学家", "知县"]
+                }
+            ],
+            introduction: "扶沟县位于河南省周口市，因境内东有扶亭，西有洧水沟，各取一字，故称'扶沟'。古来为中原之地，宋代时曾为理学大家程颢治理之地，留下了勤政爱民的佳话；近代更是英雄辈出，以吉鸿昌将军为代表。扶沟的历史交织着儒家的仁政爱民思想（程颢）和炽热的家国情怀与民族气节（吉鸿昌），是一座有文化、有骨气、有温度的城市。"
+        };
+
+        // 获取DOM元素
+        const chatForm = document.getElementById('chat-form');
+        const userInput = document.getElementById('user-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        // 处理表单提交
+        chatForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = userInput.value.trim();
+            
+            if (message) {
+                // 添加用户消息到聊天窗口
+                addMessageToChat(message, 'user');
+                
+                // 清空输入框
+                userInput.value = '';
+                
+                // 生成AI回复
+                generateAIResponse(message);
+            }
+        });
+
+        // 添加消息到聊天窗口
+        function addMessageToChat(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex items-start fade-in ${sender === 'user' ? 'justify-end' : ''}`;
+            
+            if (sender === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="bg-primary text-white rounded-lg rounded-tr-none px-4 py-2 max-w-[80%]">
+                        <p class="pre-line">${message}</p>
+                    </div>
+                    <div class="bg-gray-300 text-gray-800 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 ml-3">
+                        <i class="fa fa-user"></i>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mr-3">
+                        <i class="fa fa-robot"></i>
+                    </div>
+                    <div class="bg-secondary text-gray-800 rounded-lg rounded-tl-none px-4 py-2 max-w-[80%]">
+                        <p class="pre-line">${message}</p>
+                    </div>
+                `;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            // 滚动到底部
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // 生成AI回复
+        function generateAIResponse(userMessage) {
+            let response = "";
+            const lowerCaseMessage = userMessage.toLowerCase();
+            
+            // 检查是否询问特定美食
+            const foodMatch = findMatchingFood(lowerCaseMessage);
+            if (foodMatch) {
+                response = `${foodMatch.name}：${foodMatch.description}`;
+            }
+            // 检查是否询问特定名人
+            else if (findMatchingCelebrity(lowerCaseMessage)) {
+                const celebrityMatch = findMatchingCelebrity(lowerCaseMessage);
+                response = `${celebrityMatch.name}：${celebrityMatch.description}`;
+                
+                // 如果询问包含"故事"关键词，添加更多故事信息
+                if (lowerCaseMessage.includes("故事") || lowerCaseMessage.includes("事迹")) {
+                    response += "\n\n相关故事：\n" + celebrityMatch.stories.map(story => `• ${story}`).join("\n");
+                }
+            }
+            // 扶沟美食相关关键词
+            else if (lowerCaseMessage.includes("扶沟") && (lowerCaseMessage.includes("美食") || lowerCaseMessage.includes("好吃") || lowerCaseMessage.includes("特产") || lowerCaseMessage.includes("吃什么"))) {
+                response = "扶沟的美食可多啦！如果您想体验本地人最日常的味道，一定要试试我们的酱豆和烧饼。酱豆口味丰富，是很多扶沟人从小吃到大的味道；刚出炉的烧饼麦香十足，掰开夹上热腾腾的崔桥何湾牛肉，那叫一个香！如果是正餐，大盘鸡和扶沟烩面都非常有特色。需要我为您详细介绍某一种吗？";
+            } 
+            // 扶沟名人相关关键词（不再需要同时包含"扶沟"）
+            else if (lowerCaseMessage.includes("名人") || lowerCaseMessage.includes("历史") || lowerCaseMessage.includes("人物") || lowerCaseMessage.includes("名事")) {
+                response = "扶沟可是人杰地灵呢！最让我们引以为傲的是抗日英雄吉鸿昌将军。他不仅是战功卓著的将领，更有铮铮铁骨。他在国外胸前佩戴'我是中国人'木牌的故事，以及就义前'国破尚如此，我何惜此头'的诗篇，都感人至深。另外，北宋理学家程颢也曾在我们扶沟做过知县，他勤政爱民、刚正不阿，留下了'视民如伤'的佳话。您对哪一位的故事更感兴趣呢？";
+            }
+            // 会议时间/日程相关关键词
+            else if (lowerCaseMessage.includes("会议时间") || lowerCaseMessage.includes("会议日程") || lowerCaseMessage.includes("时间安排") || lowerCaseMessage.includes("议程") || lowerCaseMessage.includes("日程安排")) {
+                response = `📅 会议时间安排如下：\n• 报到：${conferenceInfo.time.checkin}\n• DeepSeek培训：${conferenceInfo.time.training}\n• 工作会议：${conferenceInfo.time.meeting}\n• 参观返程：${conferenceInfo.time.return}`;
+            }
+            // 会务信息相关关键词
+            else if (lowerCaseMessage.includes("时间") || lowerCaseMessage.includes("时候") || lowerCaseMessage.includes("哪天")) {
+                if (lowerCaseMessage.includes("报到") || lowerCaseMessage.includes("签到")) {
+                    response = `报到时间是：${conferenceInfo.time.checkin}。`;
+                } else if (lowerCaseMessage.includes("培训")) {
+                    response = `DeepSeek培训时间是：${conferenceInfo.time.training}。`;
+                } else if (lowerCaseMessage.includes("工作") || lowerCaseMessage.includes("会议")) {
+                    response = `工作会议时间是：${conferenceInfo.time.meeting}。`;
+                } else if (lowerCaseMessage.includes("返程") || lowerCaseMessage.includes("回去") || lowerCaseMessage.includes("结束")) {
+                    response = `返程时间是：${conferenceInfo.time.return}。`;
+                } else {
+                    response = `📅 会议时间安排如下：\n• 报到：${conferenceInfo.time.checkin}\n• DeepSeek培训：${conferenceInfo.time.training}\n• 工作会议：${conferenceInfo.time.meeting}\n• 参观返程：${conferenceInfo.time.return}`;
+                }
+            } 
+            else if (lowerCaseMessage.includes("地点") || lowerCaseMessage.includes("地址") || lowerCaseMessage.includes("哪里") || lowerCaseMessage.includes("位置")) {
+                response = `会议地址是：${conferenceInfo.location}。您可以通过查看地图获取详细位置信息。`;
+            }
+            else if (lowerCaseMessage.includes("要求") || lowerCaseMessage.includes("需要") || lowerCaseMessage.includes("带什么")) {
+                response = "📋 参会要求：\n" + conferenceInfo.requirements.map(req => `• ${req}`).join("\n");
+            }
+            else if (lowerCaseMessage.includes("天气") || lowerCaseMessage.includes("气温") || lowerCaseMessage.includes("温度")) {
+                // 使用图标和格式化文本显示天气
+                response = "🌤️ 会期天气情况：\n" + 
+                    conferenceInfo.weather.map(day => {
+                        let icon = "";
+                        if (day.condition.includes("晴")) icon = "☀️";
+                        else if (day.condition.includes("雨")) icon = "🌧️";
+                        else if (day.condition.includes("云")) icon = "☁️";
+                        else icon = "🌡️";
+                        
+                        return `${icon} ${day.date}：${day.condition} ${day.temp}`;
+                    }).join("\n");
+            }
+            else if (lowerCaseMessage.includes("联系") || lowerCaseMessage.includes("电话") || lowerCaseMessage.includes("咨询") || lowerCaseMessage.includes("找谁")) {
+                response = `📞 会务咨询请联系：${conferenceInfo.contact.person}，电话：${conferenceInfo.contact.phone}。`;
+            }
+            else if (lowerCaseMessage.includes("你好") || lowerCaseMessage.includes("您好") || lowerCaseMessage.includes("嗨") || lowerCaseMessage.includes("hello")) {
+                response = "您好！我是2025绿业元全国网点会的AI咨询助手，我可以为您解答关于会议时间、地点、参会要求、天气以及扶沟当地美食、名人等方面的问题。请问有什么可以帮您？";
+            }
+            else {
+                response = "抱歉，我没有理解您的问题。关于2025绿业元全国网点会的更多信息，您可以参考会务指南，或联系会务部袁艳艳（15036022325）咨询。如果您想了解扶沟的美食或名人，也可以直接问我哦！";
+            }
+            
+            // 模拟思考延迟
+            setTimeout(() => {
+                addMessageToChat(response, 'ai');
+            }, 800);
+        }
+
+        // 查找匹配的美食
+        function findMatchingFood(message) {
+            for (const food of fugouInfo.foods) {
+                for (const keyword of food.keywords) {
+                    if (message.includes(keyword.toLowerCase())) {
+                        return food;
+                    }
+                }
+            }
+            return null;
+        }
+
+        // 查找匹配的名人
+        function findMatchingCelebrity(message) {
+            for (const celebrity of fugouInfo.celebrities) {
+                for (const keyword of celebrity.keywords) {
+                    if (message.includes(keyword.toLowerCase())) {
+                        return celebrity;
+                    }
+                }
+            }
+            return null;
+        }
+
+        // 快速提问函数
+        function askAboutFood() {
+            userInput.value = "扶沟有什么美食推荐？";
+            chatForm.dispatchEvent(new Event('submit'));
+        }
+
+        function askAboutCelebrities() {
+            userInput.value = "扶沟有哪些名人？";
+            chatForm.dispatchEvent(new Event('submit'));
+        }
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
